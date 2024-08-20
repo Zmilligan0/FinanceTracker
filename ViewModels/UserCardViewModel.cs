@@ -12,12 +12,12 @@ namespace FinanceTracker.ViewModels
 {
     public class UserCardViewModel
     {
-        public User User { get; }
+        public User CurrentUser { get; }
         public ICommand SelectUserCommand { get; }
 
         public UserCardViewModel(User user)
         {
-            User = user;
+            CurrentUser = user;
             SelectUserCommand = new RelayCommand(OnSelectUser);
         }
 
@@ -26,7 +26,7 @@ namespace FinanceTracker.ViewModels
             // Implement logic to handle user selection.
             // For example, you might notify the MainWindow of the selected user
             var mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.SelectedUser = User;
+            mainWindow.SelectedUser = CurrentUser;
 
             // Navigate to Home.xaml
             mainWindow.NavigateToHome();
