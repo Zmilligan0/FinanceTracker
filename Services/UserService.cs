@@ -20,8 +20,9 @@ namespace FinanceTracker.Services
         {
             if (_context.Users.Any() == false)
             {
-                return null;
-            };
+                //Return an empty IEnumerable if there are no users in the database
+                return new List<User>();
+            }
 
             return [.. _context.Users];
         }

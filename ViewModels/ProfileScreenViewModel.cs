@@ -59,7 +59,8 @@ namespace FinanceTracker.ViewModels
         private void OnDeleteUser()
         {
             _userService.DeleteUser(CopyUser.Id);
-            OnNavigateToHome();
+            MainWindow mainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
+            mainWindow.NavigateToStartScreen();
             Console.WriteLine("User account deleted!");
         }
 

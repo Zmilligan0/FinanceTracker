@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace FinanceTracker.ViewModels
@@ -19,6 +20,8 @@ namespace FinanceTracker.ViewModels
 
         public ICommand AddUserCommand { get; }
 
+        public ICommand QuitApplicationCommand { get; }
+
         public StartScreenViewModel(UserService UserService)
         {
             _userService = UserService;
@@ -28,11 +31,19 @@ namespace FinanceTracker.ViewModels
             );
 
             AddUserCommand = new RelayCommand(OnAddUser);
+            QuitApplicationCommand = new RelayCommand(OnQuitApplication);
+        }
+
+        private void OnQuitApplication()
+        {
+
+            Application.Current.Shutdown();
         }
 
         private void OnAddUser()
         {
-            //Navigate to create user page.
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.NavigateToCreateUser();
         }
     }
 }
