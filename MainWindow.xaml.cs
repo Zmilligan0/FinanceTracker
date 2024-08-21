@@ -67,6 +67,21 @@ namespace FinanceTracker
             MainContentControl.Content = createUser;
         }
 
+        public void NavigateToTransactions()
+        {
+            TransactionsScreen transactions = new TransactionsScreen();
+            transactions.DataContext = new TransactionsScreenViewModel(SelectedUser, UserService);
+            MainContentControl.Content = transactions;
+        }
+
+        public void NavigateToNewTransaction()
+        {
+            NewTransaction newTransaction = new NewTransaction();
+            newTransaction.DataContext = new NewTransactionViewModel(SelectedUser, UserService);
+            MainContentControl.Content = newTransaction;
+        }
+
+
         //TODO SECTION
         // New User button and crud page.
     }

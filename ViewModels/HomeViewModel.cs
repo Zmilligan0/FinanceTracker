@@ -17,24 +17,32 @@ namespace FinanceTracker.ViewModels
         public ICommand NavigateToStartScreenCommand { get; }
         public ICommand NavigateToProfileCommand { get; }
 
+        public ICommand NavigateToTransactionsCommand { get; }
+
+        // mainwindow ref
+        private MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+
         public HomeViewModel(User LoggedInUser)
         {
             CurrentUser = LoggedInUser;
             NavigateToStartScreenCommand = new RelayCommand(OnNavigateToStartScreen);
             NavigateToProfileCommand = new RelayCommand(OnNavigateToProfile);
+            NavigateToTransactionsCommand = new RelayCommand(OnNavigateToTransactions);
+        }
+
+        private void OnNavigateToTransactions()
+        {
+            mainWindow.NavigateToTransactions();
         }
 
         private void OnNavigateToStartScreen()
         {
-            // Implement logic to navigate to the StartScreen
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
             mainWindow.NavigateToStartScreen();
         }
 
         private void OnNavigateToProfile()
         {
-            // Implement logic to navigate to the Profile screen
-            var mainWindow = (MainWindow)Application.Current.MainWindow;
+
             mainWindow.NavigateToProfile();
         }
     }

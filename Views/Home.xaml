@@ -7,11 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <!-- Define the main layout structure -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- Top Bar -->
             <RowDefinition Height="*"/>
+            <!-- Main Content -->
         </Grid.RowDefinitions>
-        
+
         <!-- Top Bar -->
         <Grid Grid.Row="0" Background="LightGray">
             <Grid.ColumnDefinitions>
@@ -19,20 +22,37 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            
+
             <!-- User Name -->
             <Button Grid.Column="0" Content="{Binding CurrentUser.Name}" Command="{Binding NavigateToProfileCommand}" VerticalAlignment="Center" Margin="10"/>
-            
+
             <!-- Application Name -->
             <TextBlock Grid.Column="1" Text="Finance Tracker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            
+
             <!-- Logout Button -->
             <Button Grid.Column="2" Content="Logout" Command="{Binding NavigateToStartScreenCommand}" HorizontalAlignment="Right" Margin="10"/>
         </Grid>
-        
-        <!-- Main Content -->
+
+        <!-- Main Content Area -->
         <Grid Grid.Row="1">
-            <!-- Add your main content here -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <!-- Sidebar -->
+                <ColumnDefinition Width="*"/>
+                <!-- Main Content -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar for Navigation -->
+            <StackPanel Grid.Column="0" Background="#F0F0F0">
+                <Button Content="Transactions" Command="{Binding NavigateToTransactionsCommand}" Margin="5" Padding="10"/>
+                <Button Content="Reports" Command="{Binding NavigateToReportsCommand}" Margin="5" Padding="10"/>
+                <!-- Add more navigation options here -->
+            </StackPanel>
+
+            <!-- Main Content -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Welcome to Finance Tracker" FontSize="24" FontWeight="Bold" Margin="10"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
