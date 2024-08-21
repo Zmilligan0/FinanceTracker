@@ -22,12 +22,14 @@ namespace FinanceTracker
     public partial class MainWindow : Window
     {
         public User? SelectedUser { get; set; }
- 
+        //User service for depedency injection
+        private readonly UserService UserService = new UserService();
+
 
         public MainWindow()
         {
             InitializeComponent();
-            StartScreen startScreen = new StartScreen();
+            StartScreen startScreen = new StartScreen(UserService);
             MainContentControl.Content = startScreen;
 
         }
@@ -44,7 +46,7 @@ namespace FinanceTracker
 
         public void NavigateToStartScreen()
         {
-            StartScreen startScreen = new StartScreen();
+            StartScreen startScreen = new StartScreen(UserService);
             MainContentControl.Content = startScreen;
             //We reset all the data to defaults
             SelectedUser = null;
@@ -53,9 +55,19 @@ namespace FinanceTracker
         public void NavigateToProfile()
         {
             ProfileScreen profile = new ProfileScreen();
-            profile.DataContext = new ProfileScreenViewModel(SelectedUser);
+            profile.DataContext = new ProfileScreenViewModel(SelectedUser, UserService);
             //Setting the data context to the profile screen
             MainContentControl.Content = profile;
         }
+
+        public void NavigateToCreateUser()
+        {
+            CreateUser createUser = new CreateUser();
+            createUser.DataContext = new CreateUserViewModel(UserService);
+            MainContentControl.Content = createUser;
+        }
+
+        //TODO SECTION
+        // New User button and crud page.
     }
 }

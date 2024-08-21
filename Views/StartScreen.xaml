@@ -6,19 +6,30 @@
              xmlns:local="clr-namespace:FinanceTracker.Views" xmlns:views="clr-namespace:FinanceTracker.Views.SubViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ScrollViewer>
-    
-    <ItemsControl ItemsSource="{Binding Users}">
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <views:UserCard />
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel />
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-    </ItemsControl>
-    </ScrollViewer>
+    <Grid>
+        <!-- Main Content -->
+        <ScrollViewer Grid.Row="0">
+            <ItemsControl ItemsSource="{Binding Users}" HorizontalContentAlignment="Center">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <views:UserCard />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- Add User Button -->
+        <Button Content="Add User"
+                Width="100"
+                Height="30"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Command="{Binding AddUserCommand}" />
+    </Grid>
 </UserControl>

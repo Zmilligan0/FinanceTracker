@@ -1,6 +1,4 @@
-﻿using FinanceTracker.Services;
-using FinanceTracker.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +16,13 @@ using System.Windows.Shapes;
 namespace FinanceTracker.Views
 {
     /// <summary>
-    /// Interaction logic for StartScreen.xaml
+    /// Interaction logic for CreateUser.xaml
     /// </summary>
-    public partial class StartScreen : UserControl
+    public partial class CreateUser : UserControl
     {
-        public StartScreen(UserService UserService)
+        public CreateUser()
         {
             InitializeComponent();
-            DataContext = new StartScreenViewModel(UserService);
         }
     }
 }

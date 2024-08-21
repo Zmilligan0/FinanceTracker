@@ -13,9 +13,11 @@ namespace FinanceTracker.ViewModels
 
     public class ProfileScreenViewModel
     {
+        private readonly UserService _userService;
+
         public User OriginalUser { get; }
         public User CopyUser { get; private set; }
-        private UserService _userService;
+
         //Command to save changes to the user profile
         public ICommand SaveChangesCommand { get; }
         public ICommand DeleteUserCommand { get; }
@@ -24,9 +26,10 @@ namespace FinanceTracker.ViewModels
 
 
 
-        public ProfileScreenViewModel(User LoggedInUser)
+        public ProfileScreenViewModel(User LoggedInUser, UserService UserService)
         {
-            _userService = new UserService();
+            _userService = UserService;
+
             OriginalUser = LoggedInUser;
             // Create a copy of the original user data
             CopyUser = new User
