@@ -82,5 +82,7 @@ namespace FinanceTracker
             MainContentControl.Content = newTransaction;
         }
 
+        //TODO: Migrate database again so that the transactions table exists.
+        //Get adding a transaction working.
     }
 }

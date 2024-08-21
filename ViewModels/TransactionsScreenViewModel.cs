@@ -16,6 +16,9 @@ namespace FinanceTracker.ViewModels
         private User _currentUser;
         private TransactionService _transactionService;
 
+        //properties for binding Transactions
+        public IEnumerable<Transaction> Transactions { get; set; }
+
         public ICommand NavigateToHomeCommand { get; }
         public ICommand AddTransactionCommand { get; }
 
@@ -25,9 +28,12 @@ namespace FinanceTracker.ViewModels
         {
             _currentUser = LoggedInUser;
             _transactionService = TransactionService;
+            Transactions = _transactionService.GetTransactions(_currentUser.Id);
+
 
             NavigateToHomeCommand = new RelayCommand(OnNavigateToHome);
             AddTransactionCommand = new RelayCommand(OnAddTransaction);
+
         }
 
         private void OnAddTransaction()

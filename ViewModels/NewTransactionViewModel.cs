@@ -19,6 +19,12 @@ namespace FinanceTracker.ViewModels
         public ICommand AddTransactionCommand { get; }
 
         private MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+
+        // Properties for binding to the boxes in NewTransaction.xaml
+        public List<Catergory> Categories { get; set; }
+        public Catergory SelectedCategory { get; set; }
+        public Transaction Transaction { get; set; }
+
         public NewTransactionViewModel(User LoggedInUser, TransactionService TransactionService)
         {
             _currentUser = LoggedInUser;
@@ -26,13 +32,20 @@ namespace FinanceTracker.ViewModels
 
             NavigateToTransactionsCommand = new RelayCommand(OnNavigateToTransactions);
             AddTransactionCommand = new RelayCommand(OnAddTransaction);
+
+            // Initialize the properties
+            Categories = _transactionService.GetCategories();
+            SelectedCategory = Categories.FirstOrDefault();
+            Transaction = new Transaction();
         }
 
         private void OnAddTransaction()
         {
             //Create a new transaction and use _transactionService to add it to the user's transactions
 
-            throw new NotImplementedException();
+
+            Transaction.Catergory = SelectedCategory;
+            _transactionService.AddTransaction(_currentUser, Transaction);
         }
 
         private void OnNavigateToTransactions()

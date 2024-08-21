@@ -11,6 +11,7 @@ namespace FinanceTracker.Services
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         //TODO: Fix the bug where the Data Source won't use relative pathing
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,6 +28,8 @@ namespace FinanceTracker.Services
                 new User { Id = 1, Name = "Alice", Email = "alice@example.com" },
                 new User { Id = 2, Name = "Bob", Email = "bob@example.com" }
             );
+
+
         }
     }
 
