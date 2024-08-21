@@ -14,17 +14,17 @@ namespace FinanceTracker.ViewModels
     public class TransactionsScreenViewModel
     {
         private User _currentUser;
-        private UserService _userService;
+        private TransactionService _transactionService;
 
         public ICommand NavigateToHomeCommand { get; }
         public ICommand AddTransactionCommand { get; }
 
         private MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
 
-        public TransactionsScreenViewModel(User LoggedInUser, UserService UserService)
+        public TransactionsScreenViewModel(User LoggedInUser, TransactionService TransactionService)
         {
             _currentUser = LoggedInUser;
-            _userService = UserService;
+            _transactionService = TransactionService;
 
             NavigateToHomeCommand = new RelayCommand(OnNavigateToHome);
             AddTransactionCommand = new RelayCommand(OnAddTransaction);

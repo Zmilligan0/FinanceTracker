@@ -24,6 +24,7 @@ namespace FinanceTracker
         public User? SelectedUser { get; set; }
         //User service for depedency injection
         private readonly UserService UserService = new UserService();
+        private readonly TransactionService TransactionService = new TransactionService();
 
 
         public MainWindow()
@@ -70,19 +71,16 @@ namespace FinanceTracker
         public void NavigateToTransactions()
         {
             TransactionsScreen transactions = new TransactionsScreen();
-            transactions.DataContext = new TransactionsScreenViewModel(SelectedUser, UserService);
+            transactions.DataContext = new TransactionsScreenViewModel(SelectedUser, TransactionService);
             MainContentControl.Content = transactions;
         }
 
         public void NavigateToNewTransaction()
         {
             NewTransaction newTransaction = new NewTransaction();
-            newTransaction.DataContext = new NewTransactionViewModel(SelectedUser, UserService);
+            newTransaction.DataContext = new NewTransactionViewModel(SelectedUser, TransactionService);
             MainContentControl.Content = newTransaction;
         }
 
-
-        //TODO SECTION
-        // New User button and crud page.
     }
 }
