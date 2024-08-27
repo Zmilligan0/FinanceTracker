@@ -30,21 +30,21 @@
                 <TextBox Name="DescriptionTextBox"
                          Width="200"
                          Margin="0,10,0,10"
-                         Text="{Binding Transaction.Description, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Description}"
                          />
 
                 <!-- Amount Input -->
                 <TextBox Name="AmountTextBox"
                          Width="200"
                          Margin="0,10,0,10"
-                         Text="{Binding Transaction.Amount, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Amount}"
                          />
 
                 <!-- Date Input -->
                 <DatePicker Name="DatePicker"
                             Width="200"
                             Margin="0,10,0,10"
-                            SelectedDate="{Binding Transaction.Date, UpdateSourceTrigger=PropertyChanged}"
+                            SelectedDate="{Binding Date}"
                             />
             </StackPanel>
 

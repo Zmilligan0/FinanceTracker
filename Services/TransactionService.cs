@@ -16,30 +16,10 @@ namespace FinanceTracker.Services
             _context = new AppDbContext();
         }
 
-        public void AddTransaction(User user, Transaction transaction)
+        public void AddTransaction(Transaction transaction)
         {
-
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
-
-            if (transaction == null)
-            {
-                throw new ArgumentNullException(nameof(transaction));
-            }
-            //Create a new transaction using the user and transaction object
-            var newTransaction = new Transaction
-            {
-                UserId = user.Id,
-                Amount = transaction.Amount,
-                Description = transaction.Description,
-                Date = transaction.Date,
-                Catergory = transaction.Catergory,
-            };
-
-            //Add the transaction to the database
-            _context.Transactions.Add(newTransaction);
+            _context.Transactions.Add(transaction);
+            _context.SaveChanges();
 
         }
 
@@ -67,15 +47,10 @@ namespace FinanceTracker.Services
 
         public List<Catergory> GetCategories()
         {
-            List<Catergory> categories = new List<Catergory>
-            {
-                new Catergory { Id = 1, Name = "Food" },
-                new Catergory { Id = 2, Name = "Transportation" },
-                new Catergory { Id = 3, Name = "Entertainment" }
-            };
-
-            return categories;
+            return _context.Catergories.ToList();
         }
+
+
 
 
 

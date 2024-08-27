@@ -23,7 +23,13 @@ namespace FinanceTracker.ViewModels
         // Properties for binding to the boxes in NewTransaction.xaml
         public List<Catergory> Categories { get; set; }
         public Catergory SelectedCategory { get; set; }
-        public Transaction Transaction { get; set; }
+        public string Description { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
+
+
+        //TODO: Set default date to today
+        // Add labels to show what each box is for
 
         public NewTransactionViewModel(User LoggedInUser, TransactionService TransactionService)
         {
@@ -36,16 +42,23 @@ namespace FinanceTracker.ViewModels
             // Initialize the properties
             Categories = _transactionService.GetCategories();
             SelectedCategory = Categories.FirstOrDefault();
-            Transaction = new Transaction();
         }
 
         private void OnAddTransaction()
         {
-            //Create a new transaction and use _transactionService to add it to the user's transactions
+            Transaction transactionToAdd = new Transaction
+            {
+                CatergoryId = SelectedCategory.Id,
+                Description = Description,
+                Amount = Amount,
+                Date = Date,
+                UserId = _currentUser.Id
+            };
+
+            _transactionService.AddTransaction(transactionToAdd);
+            OnNavigateToTransactions();
 
 
-            Transaction.Catergory = SelectedCategory;
-            _transactionService.AddTransaction(_currentUser, Transaction);
         }
 
         private void OnNavigateToTransactions()
