@@ -21,11 +21,11 @@ namespace FinanceTracker.ViewModels
         private MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
 
         // Properties for binding to the boxes in NewTransaction.xaml
-        public List<Catergory> Categories { get; set; }
-        public Catergory SelectedCategory { get; set; }
+        public List<Category> Categories { get; set; }
+        public Category SelectedCategory { get; set; }
         public string Description { get; set; }
         public decimal Amount { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
 
         //TODO: Set default date to today
@@ -48,7 +48,8 @@ namespace FinanceTracker.ViewModels
         {
             Transaction transactionToAdd = new Transaction
             {
-                CatergoryId = SelectedCategory.Id,
+                CategoryId =  SelectedCategory.Id,
+                CategoryName = SelectedCategory.Name,
                 Description = Description,
                 Amount = Amount,
                 Date = Date,

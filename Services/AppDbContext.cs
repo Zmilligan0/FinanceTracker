@@ -13,7 +13,7 @@ namespace FinanceTracker.Services
         public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        public DbSet<Catergory> Catergories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         //TODO: Fix the bug where the Data Source won't use relative pathing
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,13 +29,13 @@ namespace FinanceTracker.Services
                 new User { Id = 2, Name = "Bob", Email = "bob@example.com" }
             );
 
-            modelBuilder.Entity<Catergory>().HasData(
-                new Catergory { Id = 1, Name = "Food" },
-                new Catergory { Id = 2, Name = "Transport" },
-                new Catergory { Id = 3, Name = "Entertainment" },
-                new Catergory { Id = 4, Name = "Utilities" },
-                new Catergory { Id = 5, Name = "Rent" },
-                new Catergory { Id = 6, Name = "Other" }
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Food" },
+                new Category { Id = 2, Name = "Transport" },
+                new Category { Id = 3, Name = "Entertainment" },
+                new Category { Id = 4, Name = "Utilities" },
+                new Category { Id = 5, Name = "Rent" },
+                new Category { Id = 6, Name = "Other" }
             );
 
         }

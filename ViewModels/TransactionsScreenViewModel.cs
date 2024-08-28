@@ -18,7 +18,6 @@ namespace FinanceTracker.ViewModels
 
         //properties for binding Transactions
         public IEnumerable<Transaction> Transactions { get; set; }
-
         public ICommand NavigateToHomeCommand { get; }
         public ICommand AddTransactionCommand { get; }
 
@@ -45,5 +44,25 @@ namespace FinanceTracker.ViewModels
         {
             mainWindow.NavigateToHome();
         }
+
+
+        // Method to get CategoryName from CategoryId
+        public string GetCategoryName(int categoryId)
+        {
+            // Replace with actual logic or data retrieval
+            var categories = new Dictionary<int, string>
+            {
+                { 1, "Food" },
+                { 2, "Transport" },
+                { 3, "Entertainment" },
+                { 4, "Utilities" },
+                { 5, "Rent" },
+                { 6, "Other" }
+            };
+
+            return categories.TryGetValue(categoryId, out var categoryName) ? categoryName : "Unknown";
+        }
+
+
     }
 }

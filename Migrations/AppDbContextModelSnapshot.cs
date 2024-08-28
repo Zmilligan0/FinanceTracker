@@ -17,7 +17,7 @@ namespace FinanceTracker.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
-            modelBuilder.Entity("FinanceTracker.Models.Catergory", b =>
+            modelBuilder.Entity("FinanceTracker.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,7 +29,7 @@ namespace FinanceTracker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catergories");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -73,8 +73,12 @@ namespace FinanceTracker.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CatergoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");

@@ -45,9 +45,9 @@ namespace FinanceTracker.Services
         }
 
 
-        public List<Catergory> GetCategories()
+        public List<Category> GetCategories()
         {
-            return _context.Catergories.ToList();
+            return _context.Categories.ToList();
         }
 
 
