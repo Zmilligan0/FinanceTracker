@@ -23,7 +23,7 @@ namespace FinanceTracker.ViewModels
         // Properties for binding to the boxes in NewTransaction.xaml
         public List<Category> Categories { get; set; }
         public Category SelectedCategory { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set; } = "joe";
         public decimal Amount { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
 

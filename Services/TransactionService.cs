@@ -1,6 +1,7 @@
 ﻿using FinanceTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +24,22 @@ namespace FinanceTracker.Services
 
         }
 
-        public void UpdateTransaction()
+        public void UpdateTransaction(Transaction transaction)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTransaction()
+        public void DeleteTransaction(int transactionId)
         {
-            throw new NotImplementedException();
+            //delete transaction from database using transactionId 
+            var transaction = _context.Transactions.FirstOrDefault(transaction => transaction.Id == transactionId);
+            if (transaction != null)
+            {
+                _context.Transactions.Remove(transaction);
+                _context.SaveChanges();
+            }
+
+
         }
 
         public void GetTransaction()
@@ -38,10 +47,10 @@ namespace FinanceTracker.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Transaction> GetTransactions(int UserId)
+        public ObservableCollection<Transaction> GetTransactions(int UserId)
         {
 
-            return _context.Transactions.Where(transaction => transaction.UserId == UserId).ToList();
+            return new ObservableCollection<Transaction>(_context.Transactions.Where(transaction => transaction.UserId == UserId).ToList());
         }
 
 

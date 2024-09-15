@@ -2,6 +2,7 @@
 using FinanceTracker.Services;
 using FinanceTracker.ViewModels;
 using FinanceTracker.Views;
+using FinanceTracker.Views.TransactionViews;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,6 +69,9 @@ namespace FinanceTracker
             MainContentControl.Content = createUser;
         }
 
+
+
+        #region transaction navigation
         public void NavigateToTransactions()
         {
             TransactionsScreen transactions = new TransactionsScreen();
@@ -82,7 +86,15 @@ namespace FinanceTracker
             MainContentControl.Content = newTransaction;
         }
 
-        //TODO: Migrate database again so that the transactions table exists.
-        //Get adding a transaction working.
+        //edit transaction
+        public void NavigateToEditTransaction(Transaction transaction)
+        {
+            EditTransaction editTransaction = new EditTransaction();
+            editTransaction.DataContext = new EditTransactionViewModel(SelectedUser, TransactionService, transaction);
+            MainContentControl.Content = editTransaction;
+        }
+
+        #endregion
+
     }
 }

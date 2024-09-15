@@ -28,8 +28,8 @@
                             <TextBlock Text="{Binding Amount, StringFormat=C}" VerticalAlignment="Center" Width="100" />
                             <TextBlock Text="{Binding Date, StringFormat=d}" VerticalAlignment="Center" Width="100" />
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="Edit" Width="75" Margin="5,0" Command="{Binding DataContext.EditTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-                                <Button Content="Delete" Width="75" Margin="5,0" Command="{Binding DataContext.DeleteTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                <Button Content="Edit" Width="75" Margin="5,0" Command="{Binding DataContext.EditTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"  />
+                                <Button Content="Delete" Width="75" Margin="5,0" Command="{Binding DataContext.DeleteTransactionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" />
                             </StackPanel>
                         </StackPanel>
                     </Border>
